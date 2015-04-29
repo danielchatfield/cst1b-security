@@ -100,7 +100,7 @@ class Caesar():
         return output
 
     def solve(self, limit=1):
-        # Try each offset and return top 10 decodings
+        # Try each offset and return best decodings
 
         h = []
 

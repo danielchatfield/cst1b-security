@@ -72,7 +72,19 @@
           \end{equation*}
 
           \begin{solution}
-            % TODO
+            By Bayes, this is equivalent to:
+
+            \begin{equation*}
+              \frac{\mathbb{P}(M|C)\mathbb{P}(C)}{\mathbb{P}(M)} = \mathbb{P}(C)
+            \end{equation*}
+
+            which is equivalent to:
+
+            \begin{equation*}
+              \mathbb{P}(M|C) = \mathbb{P}(M)
+            \end{equation*}
+
+            This is the condition for perfect secrecy.
           \end{solution}
 
         \part for every probability distribution over $\mathcal{M}$, every
@@ -84,7 +96,7 @@
           \end{equation*}
 
           \begin{solution}
-            % TODO
+            \emph{Not sure about this one}
           \end{solution}
       \end{parts}
 
@@ -134,6 +146,12 @@
 
     \question Given a hardware implementation of the DES encryption function,
       what has to be modified to make it decrypt.
+
+      \begin{solution}
+        Nothing has to change for the actual encryption function as the
+        decryption function is identical, the only difference is that the
+        subkeys have to be applied in the reverse order.
+      \end{solution}
 
   \end{questions}
 \end{document}
