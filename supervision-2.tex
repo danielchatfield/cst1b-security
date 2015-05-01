@@ -1,0 +1,70 @@
+\documentclass{supervision}
+\usepackage{course}
+
+% Exercises: 10, 12, 13, 15, 18, 19, 24, 25 and 27.
+
+\Supervision{2}
+\begin{document}
+  \begin{questions}
+    \SetQuestionNumber{10}
+    \question In the CBC mode of operation, the initial vector (IV) is chosen
+      uniformly at random, using a secure source of random bits. Show that CBC
+      would not be CPA secure if the initial vector could be anticipated by the
+      adversary, for example because it is generated instead using a counter or
+      a time-stamp.
+
+    \SetQuestionNumber{12}
+    \question A sequence of plaintext blocks $M_1, \ldots , M_8$ is encrypted
+      using DES into a sequence of ciphertext blocks. Where an IV is used, it
+      is numbered $C_0$. A transmission error occurs and one bit in ciphertext
+      block $C_3$ changes its value. As a consequence, the receiver obtains
+      after decryption a corrupted plaintext block sequence $M_1', \ldots ,
+      M_8'$. For the discussed modes of operation (ECB, CBC, CFB, OFB, CTR),
+      how many bits do you expect to be wrong in each block $M_i'$?
+
+      \textit{Hint: You may find it helpful to draw decryption block diagrams}
+
+    \question Your opponent has invented a new stream cipher mode of operation
+      for DES. He thinks that OFB could be improved by feeding back into the
+      key port rather than the data port of the DES chip. He therefore sets
+      $R_0 = K$ and generates the key stream by $R_{i+1} = E_{R_i}(R_0)$. Is
+      this better or worse than OFB?
+
+    \SetQuestionNumber{15}
+    \question Show that CTR mode is not CCA secure.
+
+    \SetQuestionNumber{18}
+    \question The runtime of the usual algorithm for comparing two strings is
+      proportional to the length of the identical prefix of the inputs. How and
+      under which conditions might this help an attacker to guess a password?
+
+    \question
+      \begin{parts}
+        \part Describe a cryptographic protocol for a prepaid telephone chip
+          card that uses a secure 64-bit MAC function Mac implemented in the
+          card. In this scheme, the public telephone needs to verify not only
+          that the card is one of the genuine cards issued by the phone
+          company, but also that its value counter $V$ has been decremented by
+          the cost $C$ of the phone call. Assume both the card and the phone
+          know in advance a shared secret $K$. There is no encryption or
+          decryption function on the phone or card and the protocol must be
+          performed without contacting the phone company.
+
+          \textit{Hint: Protocol equations may make your answer clearer.}
+
+        \part Explain the disadvantage of using the same secret key $K$ in all
+          issued phone cards and suggest a way around this.
+
+      \end{parts}
+
+    \SetQuestionNumber{24}
+    \question Which of the Unix commands that you know or use are setuid root,
+      and why?
+
+    \question What Unix mechanisms could be used to implement capability based
+      access control for files? What is still missing?
+
+    \SetQuestionNumber{27}
+    \question How can you implement a Clark-Wilson policy under Unix?
+  \end{questions}
+\end{document}
