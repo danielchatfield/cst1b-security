@@ -1,0 +1,101 @@
+\documentclass{supervision}
+\usepackage{course}
+
+\Supervision{3}
+\begin{document}
+  \begin{questions}
+    \SetQuestionNumber{20}
+    \question Read Ken Thompson: \textit{Reflections on Trustung Trust},
+      Communications of the ACM, Vol 27, No 8, August 1984, pp 761-763 and
+      explain how even a careful inspection of all source code within the TCB
+      might miss carefully planted backdoors.
+
+    \question You are a technician working for the intelligence agency of
+      Amoria. Your employer is extremely curious about what goes on in a
+      particular ministry of Bumaria. This ministry has ordered networked
+      computers from an Amorian supplier and you will be given access to the
+      shipment before it reaches the customer. What modifications could you
+      perform on the hardware to help with later break-in attempts, knowing that
+      the Bumarian government only uses software from sources over which you
+      have no control?
+
+    \question The Bumarian government is forced to buy Amorian computers as its
+      national hardware industry is far from competitive. However, there are
+      strong suspicions that the Amorian intelligence agencies regularly modify
+      hardware shipments to help in their espionage efforts. Bumaria has no lack
+      of software skills and the government uses its own operating system.
+      Suggest to the Bumarians some operating system techniques that can reduce
+      the information security risks of potential malicious hardware
+      modifications.
+
+    \SetQuestionNumber{32}
+    \question The log file of your HTTP server shows odd requests such as
+      \begin{code}{{}}
+        GET /scripts/..%255c..%255cwinnt/system32/cmd.exe?/c+dir+C:\
+        GET /scripts/..%u002f..%u002fwinnt/system32/cmd.exe?/c+dir+C:\
+        GET /scripts/..%e0%80%af../winnt/system32/cmd.exe?/c+dir+C:\
+      \end{code}
+
+      Explain the attacker’s exact flaw hypothesis and what these penetration
+      attempts try to exploit.
+
+      (Is there a connection with the floor tile pattern outside the lecture
+      theatre?)
+
+    \section*{2004 Paper 3 Question 9}
+    \question Introduction to Security
+      \begin{parts}
+        \part[5] Explain briefly mechanisms that software on a desktop computer
+          can use to securely generate secret keys for use in cryptographic
+          protocols.
+
+
+        \part[5] Give \emph{two} different ways of implementing residual
+          information protection in an operating system and explain the threat
+          addressed by each.
+
+        \part Consider the standard POSIX file-system access control mechanism:
+          \begin{subparts}
+            \subpart[2] Under which conditions can files and subdirectories be
+              removed from a parent directory?
+
+            \subpart[2] Many Unix variants implement an extension known as the
+              ``sticky bit''. What is its function?
+
+            \subpart[2] On a POSIX system that lacks support for the ``sticky
+              bit'', how could you achieve an equivalent effect?
+          \end{subparts}
+
+        \part[4] VerySafe Ltd offer two vaults with electronic locks. They open
+          only after the correct decimal code has been entered. The VS100 – a
+          low-cost civilian model – expects a 6-digit code. After all six digits
+          have been entered, it will either open or will signal that the code
+          was wrong and ask for another try. The VS110 – a far more expensive
+          government version – expects a 40-digit code. Users of a beta-test
+          version of the VS110 complained about the difficulty of entering such
+          a long code correctly. The manufacturer therefore made a last-minute
+          modification. After every five digits, the VS110 now either confirms
+          that the code has been entered correctly so far, or it asks for the
+          previous five digits again. Compare the security of the VS100 and
+          VS110.
+      \end{parts}
+
+    \question Do software updates increase or decrease risk of successful
+      attack?
+
+    \section*{Introduction to Modern Cryptography Chapter 3}
+    \SetQuestionNumber{21}
+    \question Let $\prod_1 = ({Gen}_1, {Enc}_1, {Dec}_1)$ and $\prod_2 =
+      ({Gen}_2, {Enc}_2, {Dec}_2)$ be two encryption schemes for which it is
+      known that at least one is CPA-secure. The problem is that you don't know
+      which one is CPA-secure and which one may not be. Show how to construct an
+      encryption scheme $\prod$ that is guaranteed to be CPA-secure as long as
+      at least one of $\prod_1$ or· $\prod_2$ is CPA-secure. Try to provide a
+      full proof of your answer.
+
+      % Hint: Generate two plaintext messages from the original plaintext so
+      % that knowledge of either one of the parts reveals nothing about the
+      % plain­ text, but knowledge of both does yield the original plaintext.
+
+  \end{questions}
+\end{document}
