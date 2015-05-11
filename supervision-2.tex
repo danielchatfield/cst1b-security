@@ -135,7 +135,12 @@
             communication to and from the card except the initial handshake
             includes this ID.
 
-            % TODO
+            To prevent replay attacks, every time the phone attempts to read or
+            write the card it must first get a challenge from the card that it
+            has to include in the request.
+
+            The machine debits the card at the start of each minute, if the
+            debit fails then the call is terminated.
 
             If the restriction on being able to contact some central system is
             relaxed then the system can be designed in a way that is resilient
@@ -167,21 +172,30 @@
       and why?
 
       \begin{solution}
-        % TODO
+        \begin{itemize}
+          \item traceroute
+          \item sudo
+          \item crontab
+          \item login
+        \end{itemize}
+
+        They need to access resources that are only available to root.
       \end{solution}
 
     \question What Unix mechanisms could be used to implement capability based
       access control for files? What is still missing?
 
       \begin{solution}
-        % TODO
+        \emph{Not sure about this}
+
+        Can use groups, each group corresponds to a capability.
       \end{solution}
 
     \SetQuestionNumber{27}
     \question How can you implement a Clark-Wilson policy under Unix?
 
       \begin{solution}
-        % TODO
+        \emph{Not sure at all}
       \end{solution}
   \end{questions}
 \end{document}
