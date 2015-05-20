@@ -5,10 +5,20 @@
 \begin{document}
   \begin{questions}
     \SetQuestionNumber{20}
-    \question Read Ken Thompson: \textit{Reflections on Trustung Trust},
+    \question Read Ken Thompson: \textit{Reflections on Trusting Trust},
       Communications of the ACM, Vol 27, No 8, August 1984, pp 761-763 and
       explain how even a careful inspection of all source code within the TCB
       might miss carefully planted backdoors.
+      \begin{solution}
+        Inspecting the source only helps you if you then compile from the
+        source, otherwise there is no guarantee that the binary on your machine
+        is made from the same source you are inspecting.
+
+        Compilation requires a compiler, since a rogue compiler can simply
+        add a trojan to any program it compiles it is necessary to trust the
+        compiler. Inspecting the source of the compiler is clearly not
+        sufficient as the source will be compiled with the compiler itself.
+      \end{solution}
 
     \question You are a technician working for the intelligence agency of
       Amoria. Your employer is extremely curious about what goes on in a
@@ -18,6 +28,21 @@
       perform on the hardware to help with later break-in attempts, knowing that
       the Bumarian government only uses software from sources over which you
       have no control?
+      \begin{solution}
+        Depending on how much comparative value is placed on remaining covert
+        and gaining intelligence I would perform some of the following:
+
+        \begin{itemize}
+          \item Install a GSM keylogger in the keyboard
+          \item Install custom firmware on the network chip such that whenever
+            packets are sent to an IP address that belongs to Amoria the unused
+            IP fields are used to carry some data from disk or ram for
+            interception.
+          \item Install custom firmware on the hard drive such that when a
+            sufficiently random string is encountered it will, for the next $x$
+            seconds give some predetermined value for the password file.
+        \end{itemize}
+      \end{solution}
 
     \question The Bumarian government is forced to buy Amorian computers as its
       national hardware industry is far from competitive. However, there are
@@ -27,6 +52,16 @@
       Suggest to the Bumarians some operating system techniques that can reduce
       the information security risks of potential malicious hardware
       modifications.
+      \begin{solution}
+        I'm not sure what an operating system can possible do to protect against
+        completely compromised hardware. It can't put anything secret in RAM
+        since that can be compromised and yet at some point the data would have
+        to be decrypted so that it could be used.
+
+        I did think you could have a permutation function over the memory
+        addresses to randomize it, but such a function would itself have to be
+        stored in RAM.
+      \end{solution}
 
     \SetQuestionNumber{32}
     \question The log file of your HTTP server shows odd requests such as
@@ -41,6 +76,15 @@
 
       (Is there a connection with the floor tile pattern outside the lecture
       theatre?)
+      \begin{solution}
+        The attacker is checking to see whether the web server allows traversing
+        up a directory and whether it parses non-standard unicode escape
+        sequences as forward slashes.
+
+        If it does and the webserver simply executes the script referenced by
+        the URL then this will execute a command prompt with a command to list
+        the directory contents of the root directory of the C drive.
+      \end{solution}
 
     \section*{2004 Paper 3 Question 9}
     \question Introduction to Security
@@ -48,22 +92,50 @@
         \part[5] Explain briefly mechanisms that software on a desktop computer
           can use to securely generate secret keys for use in cryptographic
           protocols.
-
+          \begin{solution}
+            It can take multiple sources of random data like time between
+            interrupts, key presses, mouse movement etc. to create an entropy
+            pool from which a pseudo random bit stream generator is seeded.
+          \end{solution}
 
         \part[5] Give \emph{two} different ways of implementing residual
           information protection in an operating system and explain the threat
           addressed by each.
+          \begin{solution}
+            \emph{Doesn't appear to be on the course anymore}
+
+            \begin{description}
+              \item[Secure delete files] When a file is deleted then overwrite
+                it several times to ensure that the data could not be accessed
+                by a third party later with access to the drive.
+
+              \item[Zero registers on switch] When the operating system performs
+                a context switch it should zero the registers to prevent data
+                leaking from one process to another.
+            \end{description}
+          \end{solution}
 
         \part Consider the standard POSIX file-system access control mechanism:
           \begin{subparts}
             \subpart[2] Under which conditions can files and subdirectories be
               removed from a parent directory?
+              \begin{solution}
+                If write access for the parent directory is present.
+                If Write access for the file being deleted is present.
+              \end{solution}
 
             \subpart[2] Many Unix variants implement an extension known as the
               ``sticky bit''. What is its function?
+              \begin{solution}
+                When the sticky bit is set, only the file/directory owner or
+                root can rename or delete the file.
+              \end{solution}
 
             \subpart[2] On a POSIX system that lacks support for the ``sticky
               bit'', how could you achieve an equivalent effect?
+              \begin{solution}
+                Not sure.
+              \end{solution}
           \end{subparts}
 
         \part[4] VerySafe Ltd offer two vaults with electronic locks. They open
@@ -78,10 +150,25 @@
           that the code has been entered correctly so far, or it asks for the
           previous five digits again. Compare the security of the VS100 and
           VS110.
+          \begin{solution}
+            The VS100 requires a six digit code and thus there are $10^6$
+            different permutations.
+
+            The VS110 expects 8 5-digit passcodes and thus a user only has to
+            try $10^5$ combinations for each block and thus a total of $8 \times
+            10^5$. Therefore the VS100 provides more security.
+          \end{solution}
       \end{parts}
 
     \question Do software updates increase or decrease risk of successful
       attack?
+      \begin{solution}
+        Software updates provide a useful mechanism to keep software up to date
+        with latest patches which prevent security vulnerabilities from being
+        exploited. The update procedure is itself prone to attack and a
+        vulnerability in it could be quite disastrous but the benefits far
+        outweigh the risks.
+      \end{solution}
 
     \section*{Introduction to Modern Cryptography Chapter 3}
     \SetQuestionNumber{21}
@@ -96,6 +183,15 @@
       % Hint: Generate two plaintext messages from the original plaintext so
       % that knowledge of either one of the parts reveals nothing about the
       % plain­ text, but knowledge of both does yield the original plaintext.
+
+      \begin{solution}
+        Not sure whether this is sound.
+
+        Let $X$ be a random sequence of bits that is the same length as the
+        message. Let $Y = m \oplus X$. Neither $X$ or $Y$ reveal anything about
+        the plaintext individually. These can then be put through the 2 schemes
+        individually. 
+      \end{solution}
 
   \end{questions}
 \end{document}
